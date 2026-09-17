@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel - Portfólio Pessoal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display for Serif headings, Plus Jakarta Sans / Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#EFF6F9',
+                            cardBg: '#E6F0F5',
+                            text: '#0F172A',
+                            textMuted: '#475569',
+                            purple: '#7C3AED',
+                            purpleLight: '#EDE9FE',
+                            border: '#D1E0E8',
+                            tagBg: '#E2EEF3'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Lora', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EFF6F9;
+            color: #0F172A;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .serif-title {
+            font-family: 'Lora', serif;
+        }
+
+        /* Diagonal stripes background pattern for avatar */
+        .diagonal-stripes {
+            background: repeating-linear-gradient(
+                -45deg,
+                #DCECF3,
+                #DCECF3 8px,
+                #EBF4F8 8px,
+                #EBF4F8 16px
+            );
+        }
+
+        /* Custom Scroll Indicator Rotation */
+        .writing-mode-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* Smooth scale hover effects */
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(124, 58, 237, 0.12);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EFF6F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-purple-200 selection:text-purple-900">
+
+    <!-- Header Navigation -->
+    <header class="w-full max-w-6xl mx-auto px-6 py-6 flex items-center justify-between relative z-20">
+        <div class="flex items-center space-x-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <!-- Logo Icon matching screenshot -->
+            <svg class="w-7 h-7 text-purple-600 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 17l6-10 5 7 4-4 3 7"/>
+            </svg>
+            <span class="font-bold tracking-wider text-xs uppercase text-slate-800">MENU</span>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700">
+            <a href="#sobre" class="hover:text-purple-600 transition-colors">Sobre mim</a>
+            <a href="#entregas" class="hover:text-purple-600 transition-colors">Minhas entregas</a>
+            <a href="#contato" class="hover:text-purple-600 transition-colors">Contato</a>
+        </nav>
+
+        <a href="#contato" class="inline-flex items-center space-x-2 border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all shadow-sm active:scale-95">
+            <i class="far fa-comment-dots text-sm"></i>
+            <span>CONTATO</span>
+        </a>
+    </header>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-6xl mx-auto px-6 flex-1">
+        
+        <!-- HERO SECTION -->
+        <section class="relative min-h-[80vh] flex flex-col justify-center py-12 md:py-20">
+            
+            <!-- Side Scroll text indicator -->
+            <div class="hidden lg:flex absolute -left-12 top-1/2 -translate-y-1/2 items-center text-slate-400 text-[10px] tracking-[0.3em] uppercase font-semibold">
+                <span class="writing-mode-vertical rotate-180 mb-2">SCROLL</span>
+                <div class="w-[1px] h-12 bg-slate-300"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Location / Age Badge -->
+                    <div class="inline-block bg-white/80 backdrop-blur border border-purple-200 text-purple-700 px-4 py-1.5 rounded-full text-xs font-semibold shadow-sm">
+                        15 anos • Varginha, MG
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 class="serif-title text-5xl sm:text-6xl md:text-7xl font-normal text-slate-900 tracking-tight leading-[1.1]">
+                        Oi, meu nome<br />é <span class="font-bold text-slate-900">Miguel</span>.
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="text-slate-600 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+                        Sou estudante de <strong class="text-slate-900 font-semibold">Informática para Internet</strong>, de Varginha, Minas Gerais. Curioso, tranquilo e sempre disposto a ajudar.
+                    </p>
+                </div>
+
+                <!-- Hero Right: SVG Avatar Graphic matching design exactly -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-sm aspect-[4/5] rounded-3xl p-6 diagonal-stripes flex items-end justify-center border border-sky-100 overflow-hidden shadow-inner">
+                        
+                        <!-- Vector Graphic Avatar -->
+                        <svg class="w-full h-auto max-h-[90%] drop-shadow-md" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Shirt -->
+                            <path d="M70 260C70 240 100 230 150 230C200 230 230 240 230 260V360H70V260Z" fill="#A2E3F3" stroke="#6C5CE7" stroke-width="4"/>
+                            
+                            <!-- Neck -->
+                            <rect x="132" y="190" width="36" height="50" fill="#F8D7C4" stroke="#6C5CE7" stroke-width="4"/>
+                            
+                            <!-- Face -->
+                            <path d="M95 120C95 70 115 60 150 60C185 60 205 70 205 120C205 175 185 200 150 200C115 200 95 175 95 120Z" fill="#F8D7C4" stroke="#6C5CE7" stroke-width="4"/>
+                            
+                            <!-- Ears -->
+                            <circle cx="92" cy="135" r="12" fill="#F8D7C4" stroke="#6C5CE7" stroke-width="4"/>
+                            <circle cx="208" cy="135" r="12" fill="#F8D7C4" stroke="#6C5CE7" stroke-width="4"/>
+                            
+                            <!-- Earring (Right ear) -->
+                            <rect x="214" y="138" width="6" height="6" fill="#FFFFFF" stroke="#6C5CE7" stroke-width="2"/>
+
+                            <!-- Eyes -->
+                            <circle cx="125" cy="122" r="3" fill="#333"/>
+                            <circle cx="175" cy="122" r="3" fill="#333"/>
+                            
+                            <!-- Eyebrows -->
+                            <path d="M115 110 Q125 106 135 110" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M165 110 Q175 106 185 110" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Glasses -->
+                            <rect x="110" y="112" width="35" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.4" stroke="#6C5CE7" stroke-width="3.5"/>
+                            <rect x="155" y="112" width="35" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.4" stroke="#6C5CE7" stroke-width="3.5"/>
+                            <path d="M145 120 H155" stroke="#6C5CE7" stroke-width="3.5"/>
+                            <path d="M95 120 L110 120" stroke="#6C5CE7" stroke-width="3.5"/>
+                            <path d="M190 120 L205 120" stroke="#6C5CE7" stroke-width="3.5"/>
+
+                            <!-- Nose -->
+                            <path d="M150 125 V142 H143" stroke="#6C5CE7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                            <!-- Smile -->
+                            <path d="M135 160 Q150 166 165 160" stroke="#6C5CE7" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+                            <!-- Beanie / Hat -->
+                            <path d="M92 110 C92 45 110 30 150 30 C190 30 208 45 208 110 H92 Z" fill="#221C18"/>
+                            <rect x="88" y="98" width="124" height="22" rx="5" fill="#1C1613" stroke="#1C1613" stroke-width="2"/>
+                        </svg>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SOBRE MIM SECTION -->
+        <section id="sobre" class="py-16 border-t border-slate-200/60">
+            <!-- Section Header with Line -->
+            <div class="flex items-center space-x-4 mb-8">
+                <h2 class="serif-title text-3xl sm:text-4xl font-bold text-slate-900 whitespace-nowrap">Sobre mim</h2>
+                <div class="w-full h-[1px] bg-slate-200"></div>
+            </div>
+
+            <div class="max-w-3xl space-y-6 text-slate-600 text-base sm:text-lg leading-relaxed">
+                <p>
+                    Meu nome é <strong class="text-slate-900 font-semibold">Miguel</strong>, tenho 15 anos e sou de <strong class="text-slate-900 font-semibold">Varginha, Minas Gerais</strong>. Faço o curso técnico de Informática para Internet, e é por aí que venho aprendendo a montar sites, organizar ideias e colocar no ar as primeiras coisas do meu portfólio. No geral, as pessoas me descrevem como alguém persistente, tranquilo e que gosta de ajudar quando pode.
+                </p>
+                <p>
+                    O que eu realmente quero é ser <strong class="text-slate-900 font-semibold">influenciador</strong> — criar conteúdo, aparecer, conversar com gente pela internet. Por enquanto tô usando o curso pra aprender o lado técnico disso tudo e ir testando ideias por aqui mesmo, nesse portfólio.
+                </p>
+
+                <!-- Tags / Pills -->
+                <div class="pt-4 flex flex-wrap gap-3">
+                    <span class="px-5 py-2 rounded-full bg-brand-tagBg text-purple-700 text-xs sm:text-sm font-semibold border border-purple-100 shadow-sm">
+                        Persistente
+                    </span>
+                    <span class="px-5 py-2 rounded-full bg-brand-tagBg text-purple-700 text-xs sm:text-sm font-semibold border border-purple-100 shadow-sm">
+                        Tranquilo
+                    </span>
+                    <span class="px-5 py-2 rounded-full bg-brand-tagBg text-purple-700 text-xs sm:text-sm font-semibold border border-purple-100 shadow-sm">
+                        Prestativo
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MINHAS ENTREGAS SECTION -->
+        <section id="entregas" class="py-16">
+            <!-- Section Header with Line -->
+            <div class="flex items-center space-x-4 mb-10">
+                <h2 class="serif-title text-3xl sm:text-4xl font-bold text-slate-900 whitespace-nowrap">Minhas entregas</h2>
+                <div class="w-full h-[1px] bg-slate-200"></div>
+            </div>
+
+            <!-- Deliveries Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 01 -->
+                <div class="bg-[#E7F2F6] border border-[#D5E5EC] rounded-2xl p-6 flex flex-col justify-between card-hover relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">#01</span>
+                            <span class="px-3 py-1 bg-purple-600 text-white text-[11px] font-semibold rounded-lg shadow-sm">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
+                            Capa do Meu Álbum
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Editei uma imagem do zero até virar a capa que representa quem eu sou.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="openModal('Capa do Meu Álbum', 'Projeto de design gráfico criando uma capa conceitual de álbum musical expressando personalidade e gostos visuais.')" class="inline-flex items-center text-xs font-bold text-purple-700 hover:text-purple-900 transition-colors">
+                            Acessar pasta <i class="fas fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 02 -->
+                <div class="bg-[#E7F2F6] border border-[#D5E5EC] rounded-2xl p-6 flex flex-col justify-between card-hover relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">#02</span>
+                            <span class="px-3 py-1 bg-purple-600 text-white text-[11px] font-semibold rounded-lg shadow-sm">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
+                            Dashboard Quem Sou Eu
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Montei um painel reunindo informações sobre mim de um jeito mais visual.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="openModal('Dashboard Quem Sou Eu', 'Painel interativo com estatísticas de aprendizado, habilidades e gostos pessoais.')" class="inline-flex items-center text-xs font-bold text-purple-700 hover:text-purple-900 transition-colors">
+                            Acessar pasta <i class="fas fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 03 -->
+                <div class="bg-[#E7F2F6] border border-[#D5E5EC] rounded-2xl p-6 flex flex-col justify-between card-hover relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">#03</span>
+                            <span class="px-3 py-1 bg-purple-600 text-white text-[11px] font-semibold rounded-lg shadow-sm">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
+                            Árvore das Profissões
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Pesquisei caminhos possíveis dentro da área de tecnologia e organizei tudo numa árvore.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="openModal('Árvore das Profissões', 'Mapeamento visual das carreiras de Tecnologia da Informação e produção de conteúdo digital.')" class="inline-flex items-center text-xs font-bold text-purple-700 hover:text-purple-900 transition-colors">
+                            Acessar pasta <i class="fas fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 04 -->
+                <div class="bg-[#E7F2F6] border border-[#D5E5EC] rounded-2xl p-6 flex flex-col justify-between card-hover relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">#04</span>
+                            <span class="px-3 py-1 bg-purple-600 text-white text-[11px] font-semibold rounded-lg shadow-sm">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
+                            Âncoras de Carreira
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Parei pra pensar no que realmente me motiva antes de escolher uma carreira.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="openModal('Âncoras de Carreira', 'Análise dos valores principais e motivadores para o futuro profissional.')" class="inline-flex items-center text-xs font-bold text-purple-700 hover:text-purple-900 transition-colors">
+                            Acessar pasta <i class="fas fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 05 -->
+                <div class="bg-[#E7F2F6] border border-[#D5E5EC] rounded-2xl p-6 flex flex-col justify-between card-hover relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">#05</span>
+                            <span class="px-3 py-1 bg-purple-600 text-white text-[11px] font-semibold rounded-lg shadow-sm">2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
+                            Manifesto
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Escrevi, com minhas próprias palavras, como quero trabalhar e me guiar daqui pra frente.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="openModal('Manifesto', 'Documento pessoal com diretrizes de conduta, objetivos e ética de criação de conteúdo.')" class="inline-flex items-center text-xs font-bold text-purple-700 hover:text-purple-900 transition-colors">
+                            Acessar pasta <i class="fas fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contato" class="py-20 text-center flex flex-col items-center">
+            <h2 class="serif-title text-4xl sm:text-5xl font-bold text-slate-900 mb-3">
+                Bora trocar uma ideia?
+            </h2>
+            <p class="text-slate-500 text-base mb-8">
+                Me chama por aqui.
+            </p>
+
+            <!-- Social Links Pill Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <a href="https://github.com/miguelopezs" target="_blank" rel="noopener noreferrer" class="px-8 py-3 rounded-full bg-white text-slate-800 text-sm font-semibold border border-slate-200 hover:border-purple-500 hover:text-purple-700 shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center space-x-2">
+                    <i class="fab fa-github text-base"></i>
+                    <span>GitHub</span>
+                </a>
+                
+                <a href="mailto:seiqnteste@gmail.com" class="px-8 py-3 rounded-full bg-white text-slate-800 text-sm font-semibold border border-slate-200 hover:border-purple-500 hover:text-purple-700 shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center space-x-2">
+                    <i class="far fa-envelope text-base"></i>
+                    <span>E-mail</span>
+                </a>
+                
+                <a href="https://instagram.com/_miguelopesz" target="_blank" rel="noopener noreferrer" class="px-8 py-3 rounded-full bg-white text-slate-800 text-sm font-semibold border border-slate-200 hover:border-purple-500 hover:text-purple-700 shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center space-x-2">
+                    <i class="fab fa-instagram text-base"></i>
+                    <span>Instagram</span>
+                </a>
+            </div>
+
+            <footer class="text-xs text-slate-400">
+                © 2026 Miguel Silva Lopes • Portfólio pessoal.
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- Modal Preview for Deliveries -->
+    <div id="projectModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center hidden px-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl transform scale-95 transition-transform duration-300 relative border border-purple-100" id="modalBox">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 transition-colors p-2 rounded-full hover:bg-slate-100">
+                <i class="fas fa-xmark text-xl"></i>
+            </button>
+            <div class="flex items-center space-x-2 text-purple-600 mb-2">
+                <i class="fas fa-folder-open text-sm"></i>
+                <span class="text-xs font-bold uppercase tracking-wider">Detalhamento da Entrega</span>
+            </div>
+            <h3 id="modalTitle" class="serif-title text-2xl font-bold text-slate-900 mb-4"></h3>
+            <p id="modalDesc" class="text-slate-600 text-sm leading-relaxed mb-6"></p>
+            
+            <div class="bg-purple-50 rounded-xl p-4 border border-purple-100 mb-6 flex items-center space-x-3 text-purple-800 text-xs">
+                <i class="fas fa-info-circle text-base text-purple-600"></i>
+                <span>Os arquivos desta entrega estão armazenados na rede da instituição técnica.</span>
+            </div>
+
+            <div class="flex justify-end space-x-3">
+                <button onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, description) {
+            const modal = document.getElementById('projectModal');
+            const modalBox = document.getElementById('modalBox');
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = description;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalBox.classList.remove('scale-95');
+                modalBox.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            const modalBox = document.getElementById('modalBox');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
